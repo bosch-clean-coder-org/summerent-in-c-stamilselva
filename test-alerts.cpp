@@ -20,5 +20,9 @@ TEST_CASE("Check and alert temperature breach according to target") {
   stBatChar.coolingType = HI_ACTIVE_COOLING;
   checkAndAlert(TO_CONTROLLER, stBatChar, 50);
   checkAndAlert(TO_EMAIL, stBatChar, 50);
+  
+  stBatChar.coolingType = PASSIVE_COOLING;
+  checkAndAlert(TO_CONTROLLER, stBatChar, -1);
+  checkAndAlert(TO_EMAIL, stBatChar, -1);
 }
 
