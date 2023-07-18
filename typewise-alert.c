@@ -20,12 +20,12 @@ BreachType classifyTemperatureBreach(
     lowerLimit = 0;
     upperLimit = 35;
   }
-  else if(coolingType == HI_ACTIVE_COOLING)
+  if(coolingType == HI_ACTIVE_COOLING)
   {
     lowerLimit = 0;
     upperLimit = 45;
   }
-  else
+  if(coolingType == MED_ACTIVE_COOLING)
   {
     lowerLimit = 0;
     upperLimit = 40;
@@ -40,13 +40,13 @@ void checkAndAlert(
     batteryChar.coolingType, temperatureInC
   );
 
-  switch(alertTarget) {
-    case TO_CONTROLLER:
-      sendToController(breachType);
-      break;
-    case TO_EMAIL:
-      sendToEmail(breachType);
-      break;
+  if(alertTarget  == TO_CONTROLLER)
+  {
+    sendToController(breachType);
+  }
+  else
+  {
+    sendToEmail(breachType);
   }
 }
 
